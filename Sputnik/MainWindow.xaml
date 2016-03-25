@@ -5,40 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudioLink_Sputnik"
         mc:Ignorable="d"
-        Title="StudioLink Sputnik" Height="480" Width="640" Background="Orange">
-    <StackPanel Margin="0,0,0,0">
+        Title="StudioLink Sputnik" Height="480" Width="640">
+    <StackPanel Margin="10,10,10,10">
         <StackPanel Orientation="Horizontal" Height="55">
-            <Label x:Name="speakerLabel" Margin="10,10,10,10" Content="Speaker:" FontSize="20" Width="120"/>
-            <ComboBox x:Name="speakerTextBox" Margin="10,10,10,10" Text="TextBox" Width="466" FontSize="20" SelectedIndex="0" BorderBrush="Black" BorderThickness="1">
-<!--                
-                <ComboBox.Resources>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="Orange" />
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Orange" />
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Orange" />
-                    <Style TargetType="TextBlock">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ComboBoxItem}}" Value="True">
-                                <Setter Property="Background" Value="Orange" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ComboBox.Resources>
--->
-                <ComboBoxItem Content="Incoming Device"/>
+            <Label x:Name="microphoneLabel" HorizontalContentAlignment="Right" Margin="10,10,10,10" Content="Microphone" FontSize="20" Width="120"/>
+            <ComboBox x:Name="microphoneTextBox" Margin="10,10,10,10" Width="440" FontSize="20" SelectedIndex="0">
+                <ComboBoxItem Content="Internal Microphone"/>
             </ComboBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Height="55">
-            <Label x:Name="microphoneLabel" Margin="10,10,10,10" Content="Microphone:" FontSize="20" Width="120"/>
-            <ComboBox x:Name="microphoneTextBox" Margin="10,10,10,10" Width="466" FontSize="20" SelectedIndex="0" BorderBrush="Black" BorderThickness="1">
-                <ComboBoxItem Content="Outgoing Device"/>
+            <Label x:Name="headphoneLabel" HorizontalContentAlignment="Right" Margin="10,10,10,10" Content="Headphone" FontSize="20" Width="120"/>
+            <ComboBox x:Name="headphoneTextBox" Margin="10,10,10,10" Width="440" FontSize="20" SelectedIndex="0">
+                <ComboBoxItem Content="Internal Speakers"/>
             </ComboBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Height="55">
-            <Label x:Name="sipLabel" Margin="10,10,10,10" Content="SIP-ID:" FontSize="20" Width="120"/>
-            <TextBox x:Name="sipTextBox" Margin="10,10,10,10" TextWrapping="NoWrap" Text="hp@studiolink.de" Width="466" FontSize="20" BorderBrush="Black" BorderThickness="1"/>
+            <Label x:Name="remoteIdLabel" HorizontalContentAlignment="Right" Margin="10,10,10,10" Content="Remote ID" FontSize="20" Width="120"/>
+            <TextBox x:Name="remoteIdTextBox" Margin="10,10,10,10" TextWrapping="NoWrap" Text="metaebene" Width="440" FontSize="20"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Height="55">
-            <Button Margin="10,10,10,10" Content="Connect" Background="White" FontSize="20" Width="100" BorderThickness="1" BorderBrush="Black"></Button>
+            <Label x:Name="localIdLabel" HorizontalContentAlignment="Right" Margin="10,10,10,10" Content="My ID" FontSize="20" Width="120"/>
+            <TextBox x:Name="localIdTextBox" Margin="10,10,10,10" TextWrapping="NoWrap" Text="be81029202" Width="440" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="55">
+            <Button Margin="10,10,10,10" Content="Connect" FontSize="20" Width="100"/>
         </StackPanel>
     </StackPanel>
 
