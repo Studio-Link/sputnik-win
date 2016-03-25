@@ -169,7 +169,7 @@
     <ClInclude Include="src\EnumBuiltinDevices.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\EnumBuiltinDevices_w64.cpp" />
+    <ClCompile Include="src\EnumBuiltinDevices_win.cpp" />
     <ClCompile Include="src\StudioLink.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

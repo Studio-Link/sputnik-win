@@ -29,7 +29,7 @@
     <ClCompile Include="src\StudioLink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EnumBuiltinDevices_w64.cpp">
+    <ClCompile Include="src\EnumBuiltinDevices_win.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
