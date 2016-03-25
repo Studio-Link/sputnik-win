@@ -1,0 +1,267 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		420D44901CA5BE7D0078778F /* StudioLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 420D448D1CA5BE7D0078778F /* StudioLink.h */; };
+		420D44911CA5BE7D0078778F /* EnumBuiltinDevices.h in Headers */ = {isa = PBXBuildFile; fileRef = 420D448E1CA5BE7D0078778F /* EnumBuiltinDevices.h */; };
+		420D44921CA5BE7D0078778F /* StudioLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 420D448F1CA5BE7D0078778F /* StudioLink.cpp */; };
+		420D44941CA5C0230078778F /* EnumBuiltinDevices_osx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 420D44931CA5C0230078778F /* EnumBuiltinDevices_osx.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		420D448D1CA5BE7D0078778F /* StudioLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudioLink.h; path = inc/StudioLink.h; sourceTree = "<group>"; };
+		420D448E1CA5BE7D0078778F /* EnumBuiltinDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnumBuiltinDevices.h; path = src/EnumBuiltinDevices.h; sourceTree = "<group>"; };
+		420D448F1CA5BE7D0078778F /* StudioLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StudioLink.cpp; path = src/StudioLink.cpp; sourceTree = "<group>"; };
+		420D44931CA5C0230078778F /* EnumBuiltinDevices_osx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnumBuiltinDevices_osx.cpp; path = src/EnumBuiltinDevices_osx.cpp; sourceTree = "<group>"; };
+		429B5C9B1CA5BE31005C516C /* libStudioLinkAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStudioLinkAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		429B5C981CA5BE31005C516C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		420D44951CA5E6970078778F /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				420D448D1CA5BE7D0078778F /* StudioLink.h */,
+				420D448E1CA5BE7D0078778F /* EnumBuiltinDevices.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		420D44961CA5E6A00078778F /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				420D448F1CA5BE7D0078778F /* StudioLink.cpp */,
+				420D44931CA5C0230078778F /* EnumBuiltinDevices_osx.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		429B5C921CA5BE31005C516C = {
+			isa = PBXGroup;
+			children = (
+				420D44961CA5E6A00078778F /* Source Files */,
+				420D44951CA5E6970078778F /* Header Files */,
+				429B5C9C1CA5BE31005C516C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		429B5C9C1CA5BE31005C516C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				429B5C9B1CA5BE31005C516C /* libStudioLinkAPI.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		429B5C991CA5BE31005C516C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				420D44901CA5BE7D0078778F /* StudioLink.h in Headers */,
+				420D44911CA5BE7D0078778F /* EnumBuiltinDevices.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		429B5C9A1CA5BE31005C516C /* StudioLinkAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 429B5C9F1CA5BE31005C516C /* Build configuration list for PBXNativeTarget "StudioLinkAPI" */;
+			buildPhases = (
+				429B5C971CA5BE31005C516C /* Sources */,
+				429B5C981CA5BE31005C516C /* Frameworks */,
+				429B5C991CA5BE31005C516C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StudioLinkAPI;
+			productName = StudioLinkAPI;
+			productReference = 429B5C9B1CA5BE31005C516C /* libStudioLinkAPI.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		429B5C931CA5BE31005C516C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "IT-Service Sebastian Reimers";
+				TargetAttributes = {
+					429B5C9A1CA5BE31005C516C = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 429B5C961CA5BE31005C516C /* Build configuration list for PBXProject "StudioLinkAPI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 429B5C921CA5BE31005C516C;
+			productRefGroup = 429B5C9C1CA5BE31005C516C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				429B5C9A1CA5BE31005C516C /* StudioLinkAPI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		429B5C971CA5BE31005C516C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				420D44921CA5BE7D0078778F /* StudioLink.cpp in Sources */,
+				420D44941CA5C0230078778F /* EnumBuiltinDevices_osx.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		429B5C9D1CA5BE31005C516C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		429B5C9E1CA5BE31005C516C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		429B5CA01CA5BE31005C516C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		429B5CA11CA5BE31005C516C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		429B5C961CA5BE31005C516C /* Build configuration list for PBXProject "StudioLinkAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				429B5C9D1CA5BE31005C516C /* Debug */,
+				429B5C9E1CA5BE31005C516C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		429B5C9F1CA5BE31005C516C /* Build configuration list for PBXNativeTarget "StudioLinkAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				429B5CA01CA5BE31005C516C /* Debug */,
+				429B5CA11CA5BE31005C516C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 429B5C931CA5BE31005C516C /* Project object */;
+}
