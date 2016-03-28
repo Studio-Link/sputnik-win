@@ -76,9 +76,6 @@ bool EnumBuiltinDevices_osx(const STUDIO_LINK_DEVICE_TYPE deviceType, STUDIO_LIN
                                                                 &description);
                             if(kAudioHardwareNoError == status)
                             {
-                                devices->devices[foundDevices].sampleRate = static_cast<double>(description.mSampleRate);
-                                devices->devices[foundDevices].channelCount = static_cast<uint32_t>(description.mChannelsPerFrame);
-                                
                                 CFStringRef deviceName = 0;
                                 dataSize = sizeof(deviceName);
                                 propertyAddress.mSelector = kAudioDevicePropertyDeviceNameCFString;
@@ -87,13 +84,21 @@ bool EnumBuiltinDevices_osx(const STUDIO_LINK_DEVICE_TYPE deviceType, STUDIO_LIN
                                                                     0, NULL, &dataSize, &deviceName);
                                 if(kAudioHardwareNoError == status)
                                 {
-                                    memset(devices->devices[foundDevices].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH * sizeof(char));
-                                    strcpy(devices->devices[foundDevices].name, CFStringGetCStringPtr(deviceName, kCFStringEncodingUTF8));
+                                    if(CFStringGetLength(deviceName) > 0)
+                                    {
+                                        memset(devices->devices[foundDevices].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH * sizeof(char));
+                                        strcpy(devices->devices[foundDevices].name, CFStringGetCStringPtr(deviceName, kCFStringEncodingUTF8));
+
+                                        devices->devices[foundDevices].sampleRate = static_cast<double>(description.mSampleRate);
+                                        devices->devices[foundDevices].channelCount = static_cast<uint32_t>(description.mChannelsPerFrame);
+
+                                        foundDevices++;
+                                    }
+                                    
                                     CFRelease(deviceName);
                                 }
                             }
                             
-                            foundDevices++;
                         }
                     }
                 }
