@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:cli/StudioLinkAPIClient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:StudioLinkAPI.xcodeproj">
+   </FileRef>
+</Workspace>

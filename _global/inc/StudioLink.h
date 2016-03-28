@@ -19,7 +19,9 @@ typedef enum _tagSTDUIO_LINK_CONNECTION_STATUS {
     CONNECTING,
     CONNECTED,
     DISCONNECTING,
-    DISCONNECTED
+    DISCONNECTED,
+    INVALID_CONNECTION_STATUS,
+    MAX_CONNECTION_STATUS = INVALID_CONNECTION_STATUS
 } STUDIO_LINK_CONNECTION_STATUS;
 
 typedef void(*STUDIO_LINK_STATUS_CALLBACK)(
@@ -37,8 +39,8 @@ typedef void(*STUDIO_LINK_LEVEL_CALLBACK)(
 typedef struct _tagSTUDIO_LINK_DEVICE {
     int32_t version;
     char name[STUDIO_LINK_DEVICE_NAME_LENGTH];
-    uint16_t channelCount;
-    uint32_t sampleRate;
+    uint32_t channelCount;
+    double sampleRate;
     bool mono;
 } STUDIO_LINK_DEVICE;
 
@@ -61,10 +63,13 @@ bool StudioLinkGetLocalId(char* localId, const size_t localIdLength);
 
 void StudioLinkDisconnect();
 
-#define STUDIO_LINK_INPUT_DEVICES   0x00000001
-#define STUDIO_LINK_OUTPUT_DEVICES  0x00000002
-#define STUDIO_LINK_ALL_DEVICES     (STUDIO_LINK_INPUT_DEVICES|STUDIO_LINK_OUTPUT_DEVICES)
-     
+typedef enum _tagSTDUIO_LINK_DEVICE_TYPE {
+    MICROPHONE,
+    HEADPHONE,
+    INVALID_DEVICE_TYPE,
+    MAX_DEVICE_TYPE = INVALID_DEVICE_TYPE
+} STUDIO_LINK_DEVICE_TYPE;
+    
 #define STUDIO_LINK_MAX_DEVICE_COUNT 8
 
 typedef struct _tagSTUDIO_LINK_DEVICE_LIST {
@@ -73,7 +78,7 @@ typedef struct _tagSTUDIO_LINK_DEVICE_LIST {
     size_t deviceCount;
 } STUDIO_LINK_DEVICE_LIST;
 
-bool StudioLinkEnumBuiltinDevices(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* devices);
+bool StudioLinkEnumBuiltinDevices(const STUDIO_LINK_DEVICE_TYPE deviceType, STUDIO_LINK_DEVICE_LIST* devices);
 
 } // extern "C"
 

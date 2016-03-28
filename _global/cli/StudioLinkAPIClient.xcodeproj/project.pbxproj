@@ -7,143 +7,131 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		420D44901CA5BE7D0078778F /* StudioLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 420D448D1CA5BE7D0078778F /* StudioLink.h */; };
-		420D44911CA5BE7D0078778F /* EnumBuiltinDevices.h in Headers */ = {isa = PBXBuildFile; fileRef = 420D448E1CA5BE7D0078778F /* EnumBuiltinDevices.h */; };
-		420D44921CA5BE7D0078778F /* StudioLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 420D448F1CA5BE7D0078778F /* StudioLink.cpp */; };
-		420D44941CA5C0230078778F /* EnumBuiltinDevices_osx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 420D44931CA5C0230078778F /* EnumBuiltinDevices_osx.cpp */; };
+		42B190F21CA96F150022B194 /* libstudiolinkapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F11CA96F150022B194 /* libstudiolinkapi.a */; };
+		42B190F41CA96F360022B194 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F31CA96F360022B194 /* CoreAudio.framework */; };
+		42B190F61CA96F4F0022B194 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F51CA96F4F0022B194 /* CoreFoundation.framework */; };
+		42CD19071CA970540060111E /* StudioLinkAPIClient in CopyFiles */ = {isa = PBXBuildFile; fileRef = 42749A531CA965A200F1973E /* StudioLinkAPIClient */; };
+		42D7FFBA1CA9661F004FBCF3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42D7FFB91CA9661F004FBCF3 /* main.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		42749A511CA965A200F1973E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = ../../../bin;
+			dstSubfolderSpec = 16;
+			files = (
+				42CD19071CA970540060111E /* StudioLinkAPIClient in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		420D448D1CA5BE7D0078778F /* StudioLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudioLink.h; path = inc/StudioLink.h; sourceTree = "<group>"; };
-		420D448E1CA5BE7D0078778F /* EnumBuiltinDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnumBuiltinDevices.h; path = src/EnumBuiltinDevices.h; sourceTree = "<group>"; };
-		420D448F1CA5BE7D0078778F /* StudioLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StudioLink.cpp; path = src/StudioLink.cpp; sourceTree = "<group>"; };
-		420D44931CA5C0230078778F /* EnumBuiltinDevices_osx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnumBuiltinDevices_osx.cpp; path = src/EnumBuiltinDevices_osx.cpp; sourceTree = "<group>"; };
-		429B5C9B1CA5BE31005C516C /* libstudiolinkapi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libstudiolinkapi.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		42749A531CA965A200F1973E /* StudioLinkAPIClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StudioLinkAPIClient; sourceTree = BUILT_PRODUCTS_DIR; };
+		42B190F11CA96F150022B194 /* libstudiolinkapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libstudiolinkapi.a; path = ../Build/Products/Debug/libstudiolinkapi.a; sourceTree = "<group>"; };
+		42B190F31CA96F360022B194 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		42B190F51CA96F4F0022B194 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		42D7FFB91CA9661F004FBCF3 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		429B5C981CA5BE31005C516C /* Frameworks */ = {
+		42749A501CA965A200F1973E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B190F61CA96F4F0022B194 /* CoreFoundation.framework in Frameworks */,
+				42B190F41CA96F360022B194 /* CoreAudio.framework in Frameworks */,
+				42B190F21CA96F150022B194 /* libstudiolinkapi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		420D44951CA5E6970078778F /* Header Files */ = {
+		42749A4A1CA965A200F1973E = {
 			isa = PBXGroup;
 			children = (
-				420D448D1CA5BE7D0078778F /* StudioLink.h */,
-				420D448E1CA5BE7D0078778F /* EnumBuiltinDevices.h */,
-			);
-			name = "Header Files";
-			sourceTree = "<group>";
-		};
-		420D44961CA5E6A00078778F /* Source Files */ = {
-			isa = PBXGroup;
-			children = (
-				420D448F1CA5BE7D0078778F /* StudioLink.cpp */,
-				420D44931CA5C0230078778F /* EnumBuiltinDevices_osx.cpp */,
-			);
-			name = "Source Files";
-			sourceTree = "<group>";
-		};
-		429B5C921CA5BE31005C516C = {
-			isa = PBXGroup;
-			children = (
-				420D44961CA5E6A00078778F /* Source Files */,
-				420D44951CA5E6970078778F /* Header Files */,
-				429B5C9C1CA5BE31005C516C /* Products */,
+				42B190F51CA96F4F0022B194 /* CoreFoundation.framework */,
+				42B190F31CA96F360022B194 /* CoreAudio.framework */,
+				42B190F11CA96F150022B194 /* libstudiolinkapi.a */,
+				42D7FFB91CA9661F004FBCF3 /* main.cpp */,
+				42749A541CA965A200F1973E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		429B5C9C1CA5BE31005C516C /* Products */ = {
+		42749A541CA965A200F1973E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				429B5C9B1CA5BE31005C516C /* libstudiolinkapi.a */,
+				42749A531CA965A200F1973E /* StudioLinkAPIClient */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		429B5C991CA5BE31005C516C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				420D44901CA5BE7D0078778F /* StudioLink.h in Headers */,
-				420D44911CA5BE7D0078778F /* EnumBuiltinDevices.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		429B5C9A1CA5BE31005C516C /* StudioLinkAPI */ = {
+		42749A521CA965A200F1973E /* StudioLinkAPIClient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 429B5C9F1CA5BE31005C516C /* Build configuration list for PBXNativeTarget "StudioLinkAPI" */;
+			buildConfigurationList = 42749A5A1CA965A200F1973E /* Build configuration list for PBXNativeTarget "StudioLinkAPIClient" */;
 			buildPhases = (
-				429B5C971CA5BE31005C516C /* Sources */,
-				429B5C981CA5BE31005C516C /* Frameworks */,
-				429B5C991CA5BE31005C516C /* Headers */,
+				42749A4F1CA965A200F1973E /* Sources */,
+				42749A501CA965A200F1973E /* Frameworks */,
+				42749A511CA965A200F1973E /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = StudioLinkAPI;
-			productName = StudioLinkAPI;
-			productReference = 429B5C9B1CA5BE31005C516C /* libstudiolinkapi.a */;
-			productType = "com.apple.product-type.library.static";
+			name = StudioLinkAPIClient;
+			productName = StudioLinkAPIClient;
+			productReference = 42749A531CA965A200F1973E /* StudioLinkAPIClient */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		429B5C931CA5BE31005C516C /* Project object */ = {
+		42749A4B1CA965A200F1973E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "IT-Service Sebastian Reimers";
 				TargetAttributes = {
-					429B5C9A1CA5BE31005C516C = {
+					42749A521CA965A200F1973E = {
 						CreatedOnToolsVersion = 7.3;
 					};
 				};
 			};
-			buildConfigurationList = 429B5C961CA5BE31005C516C /* Build configuration list for PBXProject "StudioLinkAPI" */;
+			buildConfigurationList = 42749A4E1CA965A200F1973E /* Build configuration list for PBXProject "StudioLinkAPIClient" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 429B5C921CA5BE31005C516C;
-			productRefGroup = 429B5C9C1CA5BE31005C516C /* Products */;
+			mainGroup = 42749A4A1CA965A200F1973E;
+			productRefGroup = 42749A541CA965A200F1973E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				429B5C9A1CA5BE31005C516C /* StudioLinkAPI */,
+				42749A521CA965A200F1973E /* StudioLinkAPIClient */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		429B5C971CA5BE31005C516C /* Sources */ = {
+		42749A4F1CA965A200F1973E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				420D44921CA5BE7D0078778F /* StudioLink.cpp in Sources */,
-				420D44941CA5C0230078778F /* EnumBuiltinDevices_osx.cpp in Sources */,
+				42D7FFBA1CA9661F004FBCF3 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		429B5C9D1CA5BE31005C516C /* Debug */ = {
+		42749A581CA965A200F1973E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -166,7 +154,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -187,7 +175,7 @@
 			};
 			name = Debug;
 		};
-		429B5C9E1CA5BE31005C516C /* Release */ = {
+		42749A591CA965A200F1973E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -210,7 +198,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -224,44 +212,42 @@
 			};
 			name = Release;
 		};
-		429B5CA01CA5BE31005C516C /* Debug */ = {
+		42749A5B1CA965A200F1973E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = studiolinkapi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		429B5CA11CA5BE31005C516C /* Release */ = {
+		42749A5C1CA965A200F1973E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = studiolinkapi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		429B5C961CA5BE31005C516C /* Build configuration list for PBXProject "StudioLinkAPI" */ = {
+		42749A4E1CA965A200F1973E /* Build configuration list for PBXProject "StudioLinkAPIClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				429B5C9D1CA5BE31005C516C /* Debug */,
-				429B5C9E1CA5BE31005C516C /* Release */,
+				42749A581CA965A200F1973E /* Debug */,
+				42749A591CA965A200F1973E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		429B5C9F1CA5BE31005C516C /* Build configuration list for PBXNativeTarget "StudioLinkAPI" */ = {
+		42749A5A1CA965A200F1973E /* Build configuration list for PBXNativeTarget "StudioLinkAPIClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				429B5CA01CA5BE31005C516C /* Debug */,
-				429B5CA11CA5BE31005C516C /* Release */,
+				42749A5B1CA965A200F1973E /* Debug */,
+				42749A5C1CA965A200F1973E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 429B5C931CA5BE31005C516C /* Project object */;
+	rootObject = 42749A4B1CA965A200F1973E /* Project object */;
 }
