@@ -237,6 +237,8 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
+*.VC.db
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
