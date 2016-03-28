@@ -3,7 +3,7 @@
 
 int main(int argc, const char * argv[])
 {
-    STUDIO_LINK_DEVICE_TYPE deviceType = MICROPHONE;
+    STUDIO_LINK_DEVICE_TYPE deviceType = HEADPHONE;
     STUDIO_LINK_DEVICE_LIST devices = {0};
     
     devices.version = 1;

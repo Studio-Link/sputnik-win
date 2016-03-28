@@ -26,48 +26,40 @@ template<class T = IUnknown> void SafeRelease(T*& pUnknown)
 const CLSID CLSID_MMDeviceEnumerator = __uuidof(MMDeviceEnumerator);
 const IID IID_IMMDeviceEnumerator = __uuidof(IMMDeviceEnumerator);
 
-bool EnumBuiltinDevicesInitialize_w64()
-{
-    HRESULT hr = CoInitializeEx(0, COINIT_MULTITHREADED);
-    return SUCCEEDED(hr);
-}
-
-void EnumBuiltinDevicesUninitialize_w64()
-{
-    CoUninitialize();
-}
-
 bool EnumBuiltinDevices_w64(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* devices)
 {
-    PRECONDITION_RETURN(deviceType > 0, false);
+    PRECONDITION_RETURN(deviceType != INVALID_DEVICE_TYPE, false);
     PRECONDITION_RETURN(devices != 0, false);
 
-    if(EnumBuiltinDevicesInitialize_w64())
+    bool result = false;
+
+    HRESULT hr = CoInitialize(0);
+    if(SUCCEEDED(hr))
     {
         IMMDeviceEnumerator* pDeviceEnumerator = 0;
-        HRESULT hr = CoCreateInstance(CLSID_MMDeviceEnumerator, 0, CLSCTX_INPROC_SERVER, IID_IMMDeviceEnumerator, (void**)&pDeviceEnumerator);
+        hr = CoCreateInstance(CLSID_MMDeviceEnumerator, 0, CLSCTX_INPROC_SERVER, IID_IMMDeviceEnumerator, (void**)&pDeviceEnumerator);
         if(SUCCEEDED(hr) && (pDeviceEnumerator != 0))
         {
             EDataFlow dataFlow = eAll;
-            if(deviceType == STUDIO_LINK_OUTPUT_DEVICES)
+            if(deviceType == HEADPHONE)
             {
                 dataFlow = eRender;
             }
-            else if(deviceType == STUDIO_LINK_INPUT_DEVICES)
+            else if(deviceType == MICROPHONE)
             {
                 dataFlow = eCapture;
             }
 
             IMMDeviceCollection* pDeviceCollection = 0;
-            hr = pDeviceEnumerator->EnumAudioEndpoints(dataFlow, DEVICE_STATEMASK_ALL, &pDeviceCollection);
+            hr = pDeviceEnumerator->EnumAudioEndpoints(dataFlow, DEVICE_STATE_ACTIVE, &pDeviceCollection);
             if(SUCCEEDED(hr) && (pDeviceCollection != 0))
             {
                 UINT deviceCount = 0;
                 hr = pDeviceCollection->GetCount(&deviceCount);
                 if(SUCCEEDED(hr))
                 {
-                    devices->deviceCount = static_cast<size_t>(deviceCount);
-                    for(UINT i = 0; (i < deviceCount) && (i < STUDIO_LINK_MAX_DEVICE_COUNT); i++)
+                    size_t foundDevices = 0;
+                    for(UINT i = 0; (i < deviceCount) && (foundDevices < deviceCount); i++)
                     {
                         IMMDevice* pDevice = 0;
                         hr = pDeviceCollection->Item(i, &pDevice);
@@ -77,36 +69,14 @@ bool EnumBuiltinDevices_w64(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* 
                             hr = pDevice->OpenPropertyStore(STGM_READ, &pProperties);
                             if(SUCCEEDED(hr))
                             {
-                                PROPVARIANT deviceNameProperty;
-                                PropVariantInit(&deviceNameProperty);
-                                hr = pProperties->GetValue(PKEY_Device_FriendlyName, &deviceNameProperty);
-                                if(SUCCEEDED(hr))
-                                {
-                                    PWSTR deviceName = 0;
-                                    hr = PropVariantToStringAlloc(deviceNameProperty, &deviceName);
-                                    if(SUCCEEDED(hr))
-                                    {
-                                        memset(devices->devices[i].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH);
-                                        size_t numOfCharsConverted = 0;
-                                        const size_t deviceNameLength = wcslen(deviceName);
-                                        wcstombs_s(&numOfCharsConverted, devices->devices[i].name, 
-                                            STUDIO_LINK_DEVICE_NAME_LENGTH, deviceName, deviceNameLength);
-
-                                        CoTaskMemFree(deviceName);
-                                        deviceName = 0;
-                                    }
-
-                                    PropVariantClear(&deviceNameProperty);
-                                }
-
                                 PROPVARIANT deviceFormatProperty;
                                 PropVariantInit(&deviceFormatProperty);
                                 hr = pProperties->GetValue(PKEY_AudioEngine_DeviceFormat, &deviceFormatProperty);
                                 if(SUCCEEDED(hr) && (VT_BLOB == deviceFormatProperty.vt))
                                 {
                                     WAVEFORMATEX* deviceFormat = (WAVEFORMATEX*)deviceFormatProperty.blob.pBlobData;
-                                    devices->devices[i].channelCount = deviceFormat->nChannels;
-                                    devices->devices[i].sampleRate = deviceFormat->nSamplesPerSec;
+                                    devices->devices[foundDevices].channelCount = deviceFormat->nChannels;
+                                    devices->devices[foundDevices].sampleRate = deviceFormat->nSamplesPerSec;
 
                                     if((WAVE_FORMAT_EXTENSIBLE == deviceFormat->wFormatTag) && (deviceFormat->cbSize >= 22))
                                     {
@@ -114,6 +84,30 @@ bool EnumBuiltinDevices_w64(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* 
                                     }
 
                                     PropVariantClear(&deviceFormatProperty);
+
+                                    PROPVARIANT deviceNameProperty;
+                                    PropVariantInit(&deviceNameProperty);
+                                    hr = pProperties->GetValue(PKEY_Device_FriendlyName, &deviceNameProperty);
+                                    if(SUCCEEDED(hr))
+                                    {
+                                        PWSTR deviceName = 0;
+                                        hr = PropVariantToStringAlloc(deviceNameProperty, &deviceName);
+                                        if(SUCCEEDED(hr))
+                                        {
+                                            memset(devices->devices[foundDevices].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH);
+                                            size_t numOfCharsConverted = 0;
+                                            const size_t deviceNameLength = wcslen(deviceName);
+                                            wcstombs_s(&numOfCharsConverted, devices->devices[foundDevices].name,
+                                                STUDIO_LINK_DEVICE_NAME_LENGTH, deviceName, deviceNameLength);
+
+                                            foundDevices++;
+
+                                            CoTaskMemFree(deviceName);
+                                            deviceName = 0;
+                                        }
+
+                                        PropVariantClear(&deviceNameProperty);
+                                    }
                                 }
 
                                 SafeRelease(pProperties);
@@ -122,6 +116,8 @@ bool EnumBuiltinDevices_w64(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* 
                             SafeRelease(pDevice);
                         }
                     }
+
+                    devices->deviceCount = foundDevices;
                 }
 
                 SafeRelease(pDeviceCollection);
@@ -130,9 +126,14 @@ bool EnumBuiltinDevices_w64(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* 
             SafeRelease(pDeviceEnumerator);
         }
 
-        EnumBuiltinDevicesUninitialize_w64();
+        CoUninitialize();
     }
 
-    return 0;
+    if(devices->deviceCount > 0)
+    {
+        result = true;
+    }
+
+    return result;
 }
 
