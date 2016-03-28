@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42B190F21CA96F150022B194 /* libstudiolinkapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F11CA96F150022B194 /* libstudiolinkapi.a */; };
+		42B190F41CA96F360022B194 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F31CA96F360022B194 /* CoreAudio.framework */; };
+		42B190F61CA96F4F0022B194 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F51CA96F4F0022B194 /* CoreFoundation.framework */; };
 		42D7FFBA1CA9661F004FBCF3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42D7FFB91CA9661F004FBCF3 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +27,10 @@
 
 /* Begin PBXFileReference section */
 		42749A531CA965A200F1973E /* StudioLinkAPIClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StudioLinkAPIClient; sourceTree = BUILT_PRODUCTS_DIR; };
+		42B190F11CA96F150022B194 /* libstudiolinkapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libstudiolinkapi.a; path = ../Build/Products/Debug/libstudiolinkapi.a; sourceTree = "<group>"; };
+		42B190F31CA96F360022B194 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		42B190F51CA96F4F0022B194 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		42D7FFB91CA9661F004FBCF3 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		42D7FFBD1CA96C1C004FBCF3 /* libstudiolinkapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libstudiolinkapi.a; path = ../lib/Debug/libstudiolinkapi.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B190F61CA96F4F0022B194 /* CoreFoundation.framework in Frameworks */,
+				42B190F41CA96F360022B194 /* CoreAudio.framework in Frameworks */,
+				42B190F21CA96F150022B194 /* libstudiolinkapi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,7 +50,9 @@
 		42749A4A1CA965A200F1973E = {
 			isa = PBXGroup;
 			children = (
-				42D7FFBD1CA96C1C004FBCF3 /* libstudiolinkapi.a */,
+				42B190F51CA96F4F0022B194 /* CoreFoundation.framework */,
+				42B190F31CA96F360022B194 /* CoreAudio.framework */,
+				42B190F11CA96F150022B194 /* libstudiolinkapi.a */,
 				42D7FFB91CA9661F004FBCF3 /* main.cpp */,
 				42749A541CA965A200F1973E /* Products */,
 			);
