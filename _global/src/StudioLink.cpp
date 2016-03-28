@@ -49,7 +49,7 @@ bool StudioLinkGetLocalId(char* localId, const size_t localIdLength)
     return result;
 }
 
-bool StudioLinkEnumBuiltinDevices(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* devices)
+bool StudioLinkEnumBuiltinDevices(const STUDIO_LINK_DEVICE_TYPE deviceType, STUDIO_LINK_DEVICE_LIST* devices)
 {
     return EnumBuiltinDevices(deviceType, devices);
 }

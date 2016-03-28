@@ -2,11 +2,26 @@
 #include "StudioLink.h"
 #include "EnumBuiltinDevices.h"
 
-bool EnumBuiltinDevices_osx(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* devices)
+#define PRECONDITION_RETURN(a, b) if(!(a)) { return (b); }
+
+bool EnumBuiltinDevices_osx(const STUDIO_LINK_DEVICE_TYPE deviceType, STUDIO_LINK_DEVICE_LIST* devices)
 {
+    PRECONDITION_RETURN(deviceType != INVALID_DEVICE_TYPE, false);
+    PRECONDITION_RETURN(devices != 0, false);
+    
+    AudioObjectPropertyScope scope = kAudioObjectPropertyScopeGlobal;
+    if(deviceType == MICROPHONE)
+    {
+        scope = kAudioObjectPropertyScopeInput;
+    }
+    else
+    {
+        scope = kAudioObjectPropertyScopeOutput;
+    }
+    
     AudioObjectPropertyAddress propertyAddress = {
         kAudioHardwarePropertyDevices,
-        kAudioObjectPropertyScopeGlobal,
+        scope,
         kAudioObjectPropertyElementMaster
     };
     
@@ -16,60 +31,69 @@ bool EnumBuiltinDevices_osx(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* 
                                                      0, NULL, &dataSize);
     if(kAudioHardwareNoError == status)
     {
-        UInt32 deviceCount = dataSize / sizeof(AudioDeviceID);
-        
-        AudioDeviceID* outputDevices = new AudioDeviceID[deviceCount];
-        if(outputDevices != 0)
+        size_t deviceIdCount = dataSize / sizeof(AudioDeviceID);
+        AudioDeviceID deviceIds[deviceIdCount];
+        status = AudioObjectGetPropertyData(kAudioObjectSystemObject, &propertyAddress, 0, NULL, &dataSize, deviceIds);
+        if(kAudioHardwareNoError == status)
         {
-            status = AudioObjectGetPropertyData(kAudioObjectSystemObject,
-                                                &propertyAddress,
-                                                0, NULL, &dataSize, outputDevices);
-            if(kAudioHardwareNoError == status)
+            for(UInt32 i = 0; (i < deviceIdCount) && (i < STUDIO_LINK_MAX_DEVICE_COUNT); i++)
             {
-                for(UInt32 i = 0; (i < deviceCount) && (i < STUDIO_LINK_MAX_DEVICE_COUNT); i++)
+                CFStringRef deviceName = 0;
+                dataSize = sizeof(deviceName);
+                propertyAddress.mSelector = kAudioDevicePropertyDeviceNameCFString;
+                status = AudioObjectGetPropertyData(deviceIds[i],
+                                                    &propertyAddress,
+                                                    0, NULL, &dataSize, &deviceName);
+                if(kAudioHardwareNoError == status)
                 {
-                    bool selectDevice = false;
-                    dataSize = 0;
-                    propertyAddress.mSelector = kAudioDevicePropertyStreamConfiguration;
-                    status = AudioObjectGetPropertyDataSize(outputDevices[i], &propertyAddress, 0, NULL, &dataSize);
+                    memset(devices->devices[i].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH * sizeof(char));
+                    strcpy(devices->devices[i].name, CFStringGetCStringPtr(deviceName, kCFStringEncodingUTF8));
+                    CFRelease(deviceName);
+                }
+
+                dataSize = 0;
+                propertyAddress.mScope = scope,
+                propertyAddress.mSelector = kAudioDevicePropertyStreams;
+                status = AudioObjectGetPropertyDataSize(deviceIds[i],
+                                                        &propertyAddress,
+                                                        0,
+                                                        0,
+                                                        &dataSize);
+                if(kAudioHardwareNoError == status)
+                {
+                    const size_t streamIdCount = dataSize / sizeof(AudioStreamID);
+                    AudioStreamID streamIds[streamIdCount];
+                    propertyAddress.mSelector = kAudioDevicePropertyStreams;
+                    status = AudioObjectGetPropertyData(deviceIds[i],
+                                                        &propertyAddress,
+                                                        0,
+                                                        0,
+                                                        &dataSize,
+                                                        &streamIds);
                     if(kAudioHardwareNoError == status)
                     {
-                        AudioBufferList* bufferList = static_cast<AudioBufferList *>(malloc(dataSize));
-                        if(bufferList != NULL)
+                        // FIXME: handle multiple streams
+                        if(streamIdCount > 0)
                         {
-                            status = AudioObjectGetPropertyData(outputDevices[i], &propertyAddress, 0, NULL, &dataSize, bufferList);
+                            AudioStreamID streamId = streamIds[0];
+                            AudioStreamBasicDescription description = {0};
+                            dataSize = sizeof(AudioStreamBasicDescription);
+                            propertyAddress.mSelector = kAudioStreamPropertyVirtualFormat;
+                            status = AudioObjectGetPropertyData(streamId,
+                                                                &propertyAddress,
+                                                                0,
+                                                                0,
+                                                                &dataSize,
+                                                                &description);
                             if(kAudioHardwareNoError == status)
                             {
-                                if(((0 != bufferList->mNumberBuffers) && (deviceType & STUDIO_LINK_OUTPUT_DEVICES)) ||
-                                   ((0 == bufferList->mNumberBuffers) && (deviceType & STUDIO_LINK_INPUT_DEVICES)))
-                                {
-                                    selectDevice = true;
-                                }
+                                devices->devices[i].sampleRate = static_cast<double>(description.mSampleRate);
+                                devices->devices[i].channelCount = static_cast<uint32_t>(description.mChannelsPerFrame);
                             }
-                            
-                            free(bufferList);
-                        }
-                    }
-                    
-                    if(selectDevice == true)
-                    {
-                        CFStringRef deviceName = 0;
-                        dataSize = sizeof(deviceName);
-                        propertyAddress.mSelector = kAudioDevicePropertyDeviceNameCFString;
-                        status = AudioObjectGetPropertyData(outputDevices[i],
-                                                            &propertyAddress,
-                                                            0, NULL, &dataSize, &deviceName);
-                        if(kAudioHardwareNoError == status)
-                        {
-                            memset(devices->devices[i].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH * sizeof(char));
-                            strcpy(devices->devices[i].name, CFStringGetCStringPtr(deviceName, kCFStringEncodingUTF8));
-                            CFRelease(deviceName);
                         }
                     }
                 }
             }
-            
-            delete [] outputDevices;
         }
     }
     
