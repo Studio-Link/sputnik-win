@@ -26,26 +26,16 @@ template<class T = IUnknown> void SafeRelease(T*& pUnknown)
 const CLSID CLSID_MMDeviceEnumerator = __uuidof(MMDeviceEnumerator);
 const IID IID_IMMDeviceEnumerator = __uuidof(IMMDeviceEnumerator);
 
-bool EnumBuiltinDevicesInitialize_w64()
-{
-    HRESULT hr = CoInitializeEx(0, COINIT_MULTITHREADED);
-    return SUCCEEDED(hr);
-}
-
-void EnumBuiltinDevicesUninitialize_w64()
-{
-    CoUninitialize();
-}
-
 bool EnumBuiltinDevices_w64(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* devices)
 {
     PRECONDITION_RETURN(deviceType > 0, false);
     PRECONDITION_RETURN(devices != 0, false);
 
-    if(EnumBuiltinDevicesInitialize_w64())
+    HRESULT hr = CoInitializeEx(0, COINIT_MULTITHREADED);
+    if(SUCCEEDED(hr))
     {
         IMMDeviceEnumerator* pDeviceEnumerator = 0;
-        HRESULT hr = CoCreateInstance(CLSID_MMDeviceEnumerator, 0, CLSCTX_INPROC_SERVER, IID_IMMDeviceEnumerator, (void**)&pDeviceEnumerator);
+        hr = CoCreateInstance(CLSID_MMDeviceEnumerator, 0, CLSCTX_INPROC_SERVER, IID_IMMDeviceEnumerator, (void**)&pDeviceEnumerator);
         if(SUCCEEDED(hr) && (pDeviceEnumerator != 0))
         {
             EDataFlow dataFlow = eAll;
@@ -130,7 +120,7 @@ bool EnumBuiltinDevices_w64(const uint32_t deviceType, STUDIO_LINK_DEVICE_LIST* 
             SafeRelease(pDeviceEnumerator);
         }
 
-        EnumBuiltinDevicesUninitialize_w64();
+        CoUninitialize();
     }
 
     return 0;
