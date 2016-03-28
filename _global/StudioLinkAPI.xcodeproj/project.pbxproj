@@ -11,21 +11,7 @@
 		420D44911CA5BE7D0078778F /* EnumBuiltinDevices.h in Headers */ = {isa = PBXBuildFile; fileRef = 420D448E1CA5BE7D0078778F /* EnumBuiltinDevices.h */; };
 		420D44921CA5BE7D0078778F /* StudioLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 420D448F1CA5BE7D0078778F /* StudioLink.cpp */; };
 		420D44941CA5C0230078778F /* EnumBuiltinDevices_osx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 420D44931CA5C0230078778F /* EnumBuiltinDevices_osx.cpp */; };
-		42D7FFBC1CA969BB004FBCF3 /* libstudiolinkapi.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 429B5C9B1CA5BE31005C516C /* libstudiolinkapi.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		42D7FFBB1CA96929004FBCF3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "../../../lib/$(CONFIGURATION)";
-			dstSubfolderSpec = 16;
-			files = (
-				42D7FFBC1CA969BB004FBCF3 /* libstudiolinkapi.a in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		420D448D1CA5BE7D0078778F /* StudioLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudioLink.h; path = inc/StudioLink.h; sourceTree = "<group>"; };
@@ -103,7 +89,6 @@
 				429B5C971CA5BE31005C516C /* Sources */,
 				429B5C981CA5BE31005C516C /* Frameworks */,
 				429B5C991CA5BE31005C516C /* Headers */,
-				42D7FFBB1CA96929004FBCF3 /* CopyFiles */,
 			);
 			buildRules = (
 			);

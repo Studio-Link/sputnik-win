@@ -10,18 +10,20 @@
 		42B190F21CA96F150022B194 /* libstudiolinkapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F11CA96F150022B194 /* libstudiolinkapi.a */; };
 		42B190F41CA96F360022B194 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F31CA96F360022B194 /* CoreAudio.framework */; };
 		42B190F61CA96F4F0022B194 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B190F51CA96F4F0022B194 /* CoreFoundation.framework */; };
+		42CD19071CA970540060111E /* StudioLinkAPIClient in CopyFiles */ = {isa = PBXBuildFile; fileRef = 42749A531CA965A200F1973E /* StudioLinkAPIClient */; };
 		42D7FFBA1CA9661F004FBCF3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42D7FFB91CA9661F004FBCF3 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		42749A511CA965A200F1973E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = ../../../bin;
+			dstSubfolderSpec = 16;
 			files = (
+				42CD19071CA970540060111E /* StudioLinkAPIClient in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
