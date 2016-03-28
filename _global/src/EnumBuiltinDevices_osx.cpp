@@ -86,13 +86,17 @@ bool EnumBuiltinDevices_osx(const STUDIO_LINK_DEVICE_TYPE deviceType, STUDIO_LIN
                                 {
                                     if(CFStringGetLength(deviceName) > 0)
                                     {
-                                        memset(devices->devices[foundDevices].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH * sizeof(char));
-                                        strcpy(devices->devices[foundDevices].name, CFStringGetCStringPtr(deviceName, kCFStringEncodingUTF8));
-
-                                        devices->devices[foundDevices].sampleRate = static_cast<double>(description.mSampleRate);
-                                        devices->devices[foundDevices].channelCount = static_cast<uint32_t>(description.mChannelsPerFrame);
-
-                                        foundDevices++;
+                                        const char* nativeDeviceName = CFStringGetCStringPtr(deviceName, kCFStringEncodingUTF8);
+                                        if((nativeDeviceName != 0) && (strlen(nativeDeviceName) > 0))
+                                        {
+                                            memset(devices->devices[foundDevices].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH * sizeof(char));
+                                            strncpy(devices->devices[foundDevices].name, nativeDeviceName, STUDIO_LINK_DEVICE_NAME_LENGTH - 1);
+                                            
+                                            devices->devices[foundDevices].sampleRate = static_cast<double>(description.mSampleRate);
+                                            devices->devices[foundDevices].channelCount = static_cast<uint32_t>(description.mChannelsPerFrame);
+                                            
+                                            foundDevices++;
+                                        }
                                     }
                                     
                                     CFRelease(deviceName);

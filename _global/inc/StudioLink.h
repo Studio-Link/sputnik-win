@@ -34,7 +34,7 @@ typedef void(*STUDIO_LINK_LEVEL_CALLBACK)(
     const size_t deviceLength,
     const float level);
 
-#define STUDIO_LINK_DEVICE_NAME_LENGTH 64
+#define STUDIO_LINK_DEVICE_NAME_LENGTH 256
 
 typedef struct _tagSTUDIO_LINK_DEVICE {
     int32_t version;
