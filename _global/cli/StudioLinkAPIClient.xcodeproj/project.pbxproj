@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		42D7FFBA1CA9661F004FBCF3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42D7FFB91CA9661F004FBCF3 /* main.cpp */; };
-		42D7FFBE1CA96C1C004FBCF3 /* libstudiolinkapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D7FFBD1CA96C1C004FBCF3 /* libstudiolinkapi.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42D7FFBE1CA96C1C004FBCF3 /* libstudiolinkapi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
