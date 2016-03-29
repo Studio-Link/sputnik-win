@@ -11,7 +11,7 @@ int main(int argc, const char * argv[])
     if(result == true)
     {
         std::cout << "StudioLinkEnumBuiltinDevices() found "
-                  << devices.deviceCount << " devices." << std::endl;
+                  << devices.deviceCount << " device(s)." << std::endl;
 
         for(size_t i = 0; i < devices.deviceCount; i++)
         {

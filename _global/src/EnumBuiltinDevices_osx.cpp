@@ -92,14 +92,17 @@ bool EnumBuiltinDevices_osx(const STUDIO_LINK_DEVICE_TYPE deviceType, STUDIO_LIN
                                         memset(deviceName, 0, dataSize);
                                         status = AudioObjectGetPropertyData(deviceIds[i],
                                                                             &propertyAddress,
-                                                                            0, NULL, &dataSize, deviceName);
+                                                                            0,
+                                                                            0,
+                                                                            &dataSize,
+                                                                            deviceName);
                                         if(kAudioHardwareNoError == status)
                                         {
                                             const size_t deviceNameLength = strlen(deviceName);
                                             if(deviceNameLength > 0)
                                             {
                                                 memset(devices->devices[foundDevices].name, 0, STUDIO_LINK_DEVICE_NAME_LENGTH * sizeof(char));
-                                                strncpy(devices->devices[foundDevices].name, deviceName, STUDIO_LINK_DEVICE_NAME_LENGTH * sizeof(char));
+                                                strncpy(devices->devices[foundDevices].name, deviceName, STUDIO_LINK_DEVICE_NAME_LENGTH - 1);
                                                 
                                                 devices->devices[foundDevices].sampleRate = static_cast<double>(description.mSampleRate);
                                                 devices->devices[foundDevices].channelCount = static_cast<uint32_t>(description.mChannelsPerFrame);
