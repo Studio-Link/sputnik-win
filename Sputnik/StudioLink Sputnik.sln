@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25029.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudioLink Sputnik", "StudioLink Sputnik.csproj", "{618C73E8-15CC-476A-8471-CE5BE7691951}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -32,7 +32,7 @@ Global
 		{618C73E8-15CC-476A-8471-CE5BE7691951}.Release|x64.Build.0 = Release|Any CPU
 		{618C73E8-15CC-476A-8471-CE5BE7691951}.Release|x86.ActiveCfg = Release|Any CPU
 		{618C73E8-15CC-476A-8471-CE5BE7691951}.Release|x86.Build.0 = Release|Any CPU
-		{C4BE5643-2ECC-48F5-B49D-F3C5FF0A9737}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{C4BE5643-2ECC-48F5-B49D-F3C5FF0A9737}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{C4BE5643-2ECC-48F5-B49D-F3C5FF0A9737}.Debug|x64.ActiveCfg = Debug|x64
 		{C4BE5643-2ECC-48F5-B49D-F3C5FF0A9737}.Debug|x64.Build.0 = Debug|x64
 		{C4BE5643-2ECC-48F5-B49D-F3C5FF0A9737}.Debug|x86.ActiveCfg = Debug|Win32
